@@ -1,0 +1,201 @@
+// MarvellousMain.java
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.enent.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing,JLable;
+import java.io.Serializable;
+
+class MarvellousLogin extends Template implements ActionListener, Serializable, Runnable
+{
+      JButton SUBMIT;
+      JLabel label1, lable2, lable3, TopLable;
+      final JTextField text1, text2;
+	
+      MarvellousLogin()
+       {
+          TopLabel = new JLabel()
+          TopLabel.setHorizantalAlignment(SwingConstants.CENTER);
+          TopLabel.setText("Marvellous Packer-Unpacker : Login");
+          TopLabel,setForeground(Color.BLUE);
+
+          Dimension topsize = TopLabel.getPreferredSize();
+          TopLabel.setBounds(50,40, topsize.width, topsize.height);
+          _header.add(TopLabel);
+          
+          label1 = new JLabel();
+          label1.setText("Username:");
+          label1.setForeground(Colour.white);
+
+          Dimension size = label1.getPreferredSize();
+
+          label1.setBounds(50,135, size.width, size.height);
+          label1.setHorizantalAlignment(SwingConstants.CENTER);
+
+          text1.setToolTipText("ENTER USERNAME");
+
+          label2 = new JLabel();
+          label2.setText("Password:");
+          label2.setForeground(Colour.white);
+          label2.setHorizantalAlignment(SwingConstants.CENTER);
+
+          text2 = new JPasswordField(15);
+          text2.setBounds(200,175, tsize.width, tsize.height);
+
+          text2.setToolTipText("ENTER PASSWORD");
+
+          text2.addFocusListener(new FocusListener)
+           {
+                 public void focusGained(FocusEvent e)
+                  {
+                  }
+                  public void focusLost(FocusEvent e)
+                   {
+                        label3.setText("") ;
+                    }
+             } );
+
+          SUBMIT = new JBotton("SUBMIT");
+          SUBMIT.setHorizantalAlignment(SwingConstants.CENTER);
+
+          Dimension size = SUBMIT.getPreferredSize();
+
+          SUBMIT.setBounds(50,200, ssize.width, ssize.height);
+
+          label3 =new JLabel();
+          label3.settext("");
+
+          Dimension l3size = label3.getPreferredSize();
+
+          label3.setForeground(Colour.RED); 
+          label3.setBounds(50,250, l3size.width, l3size.height);   
+          
+          Thread t = new Thread(this);
+          t.start();
+
+          _content.add(label1);
+          _content.add(text1);      
+
+          _content.add(label2);
+          _content.add(text2);      
+
+          _content.add(label3);
+          _content.add(SUBMIT);     
+
+          pack();
+          validate();
+
+         ClockHome();
+         setVisible(true);
+         this.setSize(500,500);
+         this.setResizable(false);
+         setLocationRelativeTo(null);
+
+         SUBMIT.addActionListener(this);
+         }
+
+         public void actionPerformed(ActionEvent ae)
+         {
+             String value1 = text1.getText();
+             String value2 = text2.getText();
+         
+             if( ae.getSource() == exit )
+              {
+                 this.setVisible(false);
+                 System.exit(0);
+              }
+
+             if( ae.getSource() == minimize )
+              {
+                 this.setState(this.ICONIFIED);
+              }
+ 
+             if( ae.getSource() == SUBMIT )
+              {   
+                 if( value1.equals("MarvellousAdmin") && value2.equals("MarvellousAdmin"))
+                 {
+                     NextPage page = new NaxtPage(value1);
+                     this.setVisible(false);
+                     page.pack();
+                     page.setVisible(true);
+                     page.setSize(500, 500);
+                  }
+                 else
+                  {
+                     JOptionPane.showMessageDialog(this, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
+                  }
+               }
+             }
+
+             public void run()
+             {
+                for(;;)
+                {
+                   if(text2,isFocusOwner())
+                    {
+                       if( Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK) )                  
+                          {
+                              text2.setToolTipText("Warning : CAPS LOCK is on");
+                          }
+                       else
+                          {
+                              text2.setToolTipText("");
+                          }
+                        if( ( text2.getText() ).length() < 8)
+                          {
+                              label3.setText("weak password");
+                           }
+                        else
+                           {
+                               label3.setText("");
+                            }
+                       }
+                  } 
+             }
+
+class MarvellousMain
+{
+    public static void main(String arg[])
+      {
+          try
+            { 
+               MarvellousLogin frame = new MarvellousLogin();
+               frame.setVisible(true);
+             }
+           catch( Execption e )
+             {
+                 JOptionPane.showMessageDialog(null, e.getMessage() );
+              }
+        }
+}
+
+
+
+
+
+                               
+            
+
+
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+          
+          
+
+
+
